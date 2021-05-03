@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand mr-5" href="#"><img src="imagens/logo-retry.png" width="80"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav w-100">
+			<li class="nav-item">
+				<a class="nav-link" href="/jogos">Jogos</a>
+			</li>
+			<li class="nav-item dropdown ml-auto"> <!-- ml-md-3 mt-sm-3 mt-md-0 -->
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<?= $this->view->admin ?>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="/admin_sair">Sair</a>
+				</div>
+			</li>  
+		</ul>
+	</div>
+</nav>
+<section class="container-fluid p-0 bg-secondary h-100 d-flex justify-content-center pt-5">
+    <div class="">
+        <h1 class="bg-dark Display-1 text-light p-5 mt-5">Retry</h1>
+    </div>
+</section>
+
+<style>
+    .h-50{
+        height: 50%;
+    }
+    body, html{
+        overflow-y: hidden;
+    }
+</style>

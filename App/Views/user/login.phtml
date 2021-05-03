@@ -1,0 +1,125 @@
+            <header class="container-fluid p-0 m-0 h-100"> 
+                    <div class="row d-flex justify-content-center align-items-center" >
+                        <!--Formulário de Login-->
+                        <div class=" p-0 frente widht-form mt-0  d-flex justify-content-center align-items-center flex-column">
+                                <form class=" d-flex flex-column  p-4" method="post" action="/auth">
+                                <p class="text-light ">Login</p>
+                                <!--Usuário-->
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="addon-wrapping">@</span>
+                                    </div>
+                                    <input type="text" class="form-control text-light" name="login" placeholder="Usuário" aria-label="Usuário" aria-describedby="addon-wrapping" id="input">
+                                </div>
+                                <br>
+                                <!--Senha-->
+                                <div class="input-group flex-nowrap">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="addon-wrapping">#</span>
+                                        </div>
+                                        <input type="password" class="form-control" name="senha" placeholder="Senha" aria-label="Senha" aria-describedby="addon-wrapping" id="input">
+                                </div>
+                                <br>
+                                <!--Botões-->      
+                                <button type="submit" class="btn btn-outline-dark text-light mt-1 bg-black" name="" value="Salvar">Logar</button>
+                                
+                                    <a class="btn btn-outline-dark text-light mt-2 bg-black" href="/">Voltar</a>
+                                    <?php if($this->view->erroLogin == 'form_null'){ ?>
+                                      <div class="form-group">
+                                        <span class="text-warning d-block">*Por favor, preencha os campos acima.</span>
+                                      </div>
+                                    <?php } ?>
+                                    <?php if($this->view->erroLogin == 'none_user'){ ?>
+                                      <div class="form-group">
+                                        <span class="text-warning d-block">*Nome de usuário e a senha não combinam.</span>
+                                      </div>
+                                    <?php } ?>
+                                </form>
+                                <!--Formulário de Dropdown-->
+                                <div class="dropdown m-0 w-100">
+                                    <button class="dropbtn btn btn-outline-dark w-100 text-light"> Criar Registro </button>
+                                    <div class="dropdown_content ml-3">
+                                        <form class="" method="post" action="/registrar">
+                                                    
+                                                    <!----Sei lá 1--------------------------------------------------------------------->
+                                                    <?php if($this->view->erroCadastro == 'login_curto'){ ?>
+                                                                <small class="text-warning d-block">*Nome de usuário muito curto. (min. 6 carácters)</small>
+                                                              <?php } ?>
+                                                              <?php if($this->view->erroCadastro == 'login_existente'){ ?>
+                                                                <small class="text-warning d-block">*Este nome de usuário já esta em uso.</small>
+                                                              <?php } ?>
+                                                    <div class="input-group flex-nowrap">
+                                                    
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text" id="addon-wrapping">@</span>
+                                                            </div>
+                                      
+                                                              <input type="email" name="email" class="form-control text-light" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping" id="input">
+                                                              
+                                                    </div>
+                                                        <br>
+                                                    <!----Sei lá 2--------------------------------------------------------------------->
+                                                    <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text" id="addon-wrapping">@</span>
+                                                            </div>
+                                                            <?php if($this->view->erroCadastro == 'email_existente'){ ?>
+                                                              <small class="text-warning d-block">*Este e-mail já está sendo usado por outro usuário.</small>
+                                                            <?php } ?>
+                                                            <input type="text" name="login" class="form-control text-light" placeholder="Login" aria-label="Login" aria-describedby="addon-wrapping" id="input">
+                                                        </div>
+                                                        <br>
+                                                    <!---Sei lá 3---------------------------------------------------------------------->
+                                                    <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text" id="addon-wrapping">#</span>
+                                                            </div>
+                                                            <?php if($this->view->erroCadastro == 'senha_curta'){ ?>
+                                                              <small class="text-warning d-block">*Senha muito curta. (min. 6 carácters)</small>
+                                                            <?php } ?>
+                                                            <input type="password" name="senha" class="form-control text-light" placeholder="Senha" aria-label="Senha" aria-describedby="addon-wrapping" id="input">
+                                                        </div>
+                                                        <br>    
+                                                    <!--Buttons------------------------------------------------------------------------->
+                                                    <button class="btn btn-outline-dark w-100 text-light" >Registrar</button>    
+                                                
+                                                    
+                                        </form>
+
+                                    </div>
+                                </div>
+                        </div>  
+                        <!-- Imagem background-->
+                        <div class="col-12 fixed-top atras h-100 m-0 p-0">
+                           <img class="d-block img-fluid " src="imagens/bg-retry.png" height="250px">
+                        </div>
+                        
+                        
+                    </div>
+
+                            
+                            
+                    
+                </header>
+
+<?php if($this->view->cadastroRealizado){ ?>
+<div class="modal" id="modalCadastro" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger">Retry</h5>
+      </div>
+      <div class="modal-body">
+        <p>Cadastro realizado com sucesso.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Continuar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('#modalCadastro').modal('show')
+</script>
+<?php } ?>
+

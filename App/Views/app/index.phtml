@@ -1,0 +1,551 @@
+<div class="container-fluid m-0 p-0 h-100">
+
+        <header class="p-0 m-0 h-100">
+            <div class="container-fluid h-100 p-0 m-0"> 
+                <div class="row m-0 p-0 h-100">
+                    <!--Imagem Background----------- h-100 fixed-top position-relative mb-0 p-0-------------------------->
+                    <div class="col-12 header-site d-flex justify-content-center">
+                      <div class="col-4">
+                      <form action="/search" method="post" class="w-100">
+                          <div class="col-12 mb-3 text-center h-100">
+
+                              <div class="input-group">
+                                <input type="text" name="search" class="form-control" id="validationCustomUsername" placeholder="Digite o nome de um Jogo" aria-describedby="inputGroupPrepend" required>
+                                
+                                <div class="input-group-prepend">
+                                    <span class="btn-outline-dark radius" id="inputGroupPrepend">
+      
+                                        <button class="btn btn-outline-dark h-100 w-100 text-light">Pesquisar</button>
+      
+                                    </span>
+                                  </div>
+                              </div>
+                              
+                            </div>
+                      </form>
+                    </div>
+      
+                  </div>
+                    <!--NavBar------------------------------------------------>
+                    <div class="col-12 position-absolute nav-site">
+                            <nav class="navbar navbar-expand-lg navbar-light fixed-top" >
+                                    <a class="navbar-brand text-light par-font" href="/"><img src="imagens/logo-retry.png" width="80"></a>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                      <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNav">
+                                      <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item">
+                                          <a class="nav-link text-light par-font" href="/games">Jogos</a>
+                                        </li>
+                                        <?php if($this->view->auth_token != ''){ ?>  
+                                          <li class="nav-item dropdown ml-md-3 mt-sm-3 mt-md-0">
+                                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <?= $this->view->user ?>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                              <a class="dropdown-item" href="/sair">Sair</a>
+                                            </div>
+                                          </li>
+                                        <?php }else{ ?>  
+                                          <li class="nav-item ml-md-3 mt-sm-3 mt-md-0">
+                                            <a class="nav-link text-light" href="/login">Entrar</a>
+                                          </li>
+                                        <?php } ?> 
+                                        
+                                      </ul>
+                                    </div>
+                                  </nav>
+                    </div>
+                  <!-------------------------------------------------------->
+                  </div>
+            </div>
+          </header>
+      
+            <!--Container 1 - Populares-------------------------------------------------------------------------------------->
+            
+            <div class="container-fluid m-0 p-0 bg-black">
+      
+              <div class="row m-0 p-0">
+
+                <h1 class="text-light text-center w-100 p-3 tit-font">Populares</h1>
+
+              </div>
+
+
+              <!--ROW 1 - Populares 1---------------------------->
+              <div class="row h-100 p-5 m-0 bg-dark content-pop">
+      
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 w-100 d-flex justify-content-center align-items-center">
+      
+                    <div class="p-0 m-0">
+  
+                        <h1 class="text-center text-light tit-font"><?= $this->view->populares[0]['titulo'] ?></h1>
+                    
+                        <p class="text-light text-center pl-5 pr-5 pt-2 par-font"><?= $this->view->populares[0]['sinopse_resumida'] ?></p>
+  
+                    </div>
+      
+                </div>
+      
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 h-100 w-100 d-flex justify-content-center align-items-center">
+      
+                    <!--<iframe class="h-100 w-100" src="https://www.youtube.com/embed/UB2onrc_-1o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                    <div class="m-0 p-0 div-imagem d-flex justify-content-center align-items-center">
+                    
+
+                    <a href="/jogo?id=<?= $this->view->populares[0]['id'] ?>" class="m-0 p-0 h-100 w-100">
+        
+                      <img src="imagens/<?= $this->view->populares[0]['id'] ?>/<?= $this->view->populares[0]['imgretrato'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+
+                    </a>
+                      
+                    </div>
+      
+                </div>
+      
+              </div>
+
+              <!--Row 2 - Populares 2-------------------------------------------------->
+      
+              <div class="row h-100 p-5 m-0 bg-light content-pop  mt-5">
+
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 h-100 w-100 d-flex justify-content-center align-items-center">
+        
+                      <!--<iframe class="h-100 w-100" src="https://www.youtube.com/embed/UB2onrc_-1o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                      <div class="m-0 p-0 div-imagem d-flex justify-content-center align-items-center">
+  
+                      <a href="/jogo?id=<?= $this->view->populares[1]['id'] ?>" class="m-0 p-0 h-100 w-100">
+        
+                        <img src="imagens/<?= $this->view->populares[1]['id'] ?>/<?= $this->view->populares[1]['imgretrato'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+
+                      </a>
+                        
+                      </div>
+        
+                  </div>
+      
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 w-100 d-flex justify-content-center align-items-center">
+        
+                    <div class="p-0 m-0">
+  
+                        <h1 class="text-center text-dark tit-font"><?= $this->view->populares[1]['titulo'] ?></h1>
+                    
+                        <p class="text-dark text-center pl-5 pr-5 pt-2 par-font"><?= $this->view->populares[1]['sinopse_resumida'] ?></p>
+  
+                    </div>
+        
+                  </div>
+        
+                </div>
+
+            <!--Row 3 - Populares 3-------------------------------------------------->
+
+            <div class="row h-100 p-5 m-0 bg-dark content-pop mt-5">
+      
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 w-100 d-flex justify-content-center align-items-center">
+      
+                  <div class="p-0 m-0">
+
+                      <h1 class="text-center text-light tit-font"><?= $this->view->populares[2]['titulo'] ?></h1>
+                  
+                      <p class="text-light text-center pl-5 pr-5 pt-2 par-font"><?= $this->view->populares[2]['sinopse_resumida'] ?></p>
+
+                  </div>
+      
+                </div>
+      
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 h-100 w-100 d-flex justify-content-center align-items-center">
+      
+                    <!--<iframe class="h-100 w-100" src="https://www.youtube.com/embed/UB2onrc_-1o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                    <div class="m-0 p-0 div-imagem d-flex justify-content-center align-items-center">
+
+                    <a href="/jogo?id=<?= $this->view->populares[2]['id'] ?>" class="m-0 p-0 h-100 w-100">
+        
+                      <img src="imagens/<?= $this->view->populares[2]['id'] ?>/<?= $this->view->populares[2]['imgretrato'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+
+                    </a>
+                      
+                    </div>
+      
+                </div>
+      
+              </div>
+
+
+            
+            </div>
+            <!--Fim Container Pop---------------------------------------------------------------------->
+
+
+
+            <!--Div de Separação --------------->
+
+            <div class="div-sep">
+
+
+              
+            </div>   
+            
+            <!---------------------------------->
+
+
+
+            <div class="content-lm p-1">
+
+                <div class="row w-100 m-0 p-0 content-exib bg-black">
+
+                    <div class="col-12 content-lanc">
+        
+                      <h1 class="text-light m-0 p-0 pt-3 tit-font">Lançamentos</h1>
+        
+                      <div class="row h-100 w-100 m-0 p-3 d-flex align-items-center justify-content-center">
+        
+                        <!--Div 1 - Jogo 1 -------------------------------->
+                        
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                          <a href="/jogo?id=<?= $this->view->lancamentos[0]['id'] ?>" class="m-0 p-0 h-100 w-100">
+        
+                            <img src="imagens/<?= $this->view->lancamentos[0]['id'] ?>/<?= $this->view->lancamentos[0]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+        
+                          </a>
+        
+                          <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                              <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->lancamentos[0]['titulo'] ?></h6>
+                              
+                              <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->lancamentos[0]['criador'] ?></p>
+      
+                          </div>
+        
+                        </div>
+        
+                        <!--Div 2 - Jogo 2 -------------------------------->
+                        
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                            <a href="/jogo?id=<?= $this->view->lancamentos[1]['id'] ?>" class="m-0 p-0 h-100 w-100">
+          
+                            <img src="imagens/<?= $this->view->lancamentos[1]['id'] ?>/<?= $this->view->lancamentos[1]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+          
+                            </a>
+          
+                            <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                                <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->lancamentos[1]['titulo'] ?></h6>
+                                
+                                <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->lancamentos[1]['criador'] ?></p>
+        
+                            </div>
+          
+                          </div>
+        
+                        <!--Div 3 - Jogo 3 -------------------------------->
+        
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                            <a href="/jogo?id=<?= $this->view->lancamentos[2]['id'] ?>" class="m-0 p-0 h-100 w-100">
+          
+                            <img src="imagens/<?= $this->view->lancamentos[2]['id'] ?>/<?= $this->view->lancamentos[2]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+          
+                            </a>
+          
+                            <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                                <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->lancamentos[2]['titulo'] ?></h6>
+                                
+                                <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->lancamentos[2]['criador'] ?></p>
+        
+                            </div>
+          
+                          </div>
+        
+                        <!--Div 4 - Jogo 4--------------------------------->
+        
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                            <a href="/jogo?id=<?= $this->view->lancamentos[3]['id'] ?>" class="m-0 p-0 h-100 w-100">
+          
+                            <img src="imagens/<?= $this->view->lancamentos[3]['id'] ?>/<?= $this->view->lancamentos[3]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+          
+                            </a>
+          
+                            <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                                <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->lancamentos[3]['titulo'] ?></h6>
+                                
+                                <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->lancamentos[3]['criador'] ?></p>
+        
+                            </div>
+          
+                          </div>                     
+        
+                      <!--Fim da Exibição de Jogos----------------------->
+        
+                    </div>
+        
+                    </div>
+        
+                    </div>
+
+                    
+                    <!--Row 2 - Exibição de Mais Procurados ---------------------------->
+
+                    <div class="row w-100 m-0 p-0 content-exib bg-black">
+
+                        <div class="col-12 content-lanc">
+            
+                          <h1 class="text-light m-0 p-0 pt-3 tit-font">Melhores avaliados</h1>
+            
+                          <div class="row h-100 w-100 m-0 p-3 d-flex align-items-center justify-content-center">
+            
+                            <!--Div 1 - Jogo 1 -------------------------------->
+                            
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                                <a href="/jogo?id=<?= $this->view->melhoresAvaliados[0]['id'] ?>" class="m-0 p-0 h-100 w-100">
+              
+                                <img src="imagens/<?= $this->view->melhoresAvaliados[0]['id'] ?>/<?= $this->view->melhoresAvaliados[0]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+              
+                                </a>
+              
+                                <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                                    <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->melhoresAvaliados[0]['titulo'] ?></h6>
+                                    
+                                    <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->melhoresAvaliados[0]['criador'] ?></p>
+            
+                                </div>
+              
+                              </div> 
+            
+                            <!--Div 2 - Jogo 2 -------------------------------->
+                            
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                                <a href="/jogo?id=<?= $this->view->melhoresAvaliados[1]['id'] ?>" class="m-0 p-0 h-100 w-100">
+              
+                                <img src="imagens/<?= $this->view->melhoresAvaliados[1]['id'] ?>/<?= $this->view->melhoresAvaliados[1]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+              
+                                </a>
+              
+                                <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center  bg-dark">
+              
+                                    <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->melhoresAvaliados[1]['titulo'] ?></h6>
+                                    
+                                    <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->melhoresAvaliados[1]['criador'] ?></p>
+            
+                                </div>
+              
+                              </div> 
+            
+                            <!--Div 3 - Jogo 3 -------------------------------->
+            
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                                <a href="/jogo?id=<?= $this->view->melhoresAvaliados[2]['id'] ?>" class="m-0 p-0 h-100 w-100">
+              
+                                <img src="imagens/<?= $this->view->melhoresAvaliados[2]['id'] ?>/<?= $this->view->melhoresAvaliados[2]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+              
+                                </a>
+              
+                                <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                                    <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->melhoresAvaliados[2]['titulo'] ?></h6>
+                                    
+                                    <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->melhoresAvaliados[2]['criador'] ?></p>
+            
+                                </div>
+              
+                              </div> 
+            
+                            <!--Div 4 - Jogo 4--------------------------------->
+            
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 jogo-extend float-left">
+        
+                                <a href="/jogo?id=<?= $this->view->melhoresAvaliados[3]['id'] ?>" class="m-0 p-0 h-100 w-100">
+              
+                                <img src="imagens/<?= $this->view->melhoresAvaliados[3]['id'] ?>/<?= $this->view->melhoresAvaliados[3]['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+              
+                                </a>
+              
+                                <div class="legend-jogos m-0 p-0 w-100 d-flex align-items-center justify-content-center bg-dark">
+              
+                                    <h6 class="text-light text-center m-0 p-0 float-left tit-font"><?= $this->view->melhoresAvaliados[3]['titulo'] ?></h6>
+                                    
+                                    <p class="text-light text-center m-0 p-0 float-left pl-5 par-font" style="font-size: 9pt;"><?= $this->view->melhoresAvaliados[3]['criador'] ?></p>
+            
+                                </div>
+              
+                              </div>                    
+            
+                          <!--Fim da Exibição de Jogos----------------------->
+            
+                        </div>
+            
+                        </div>
+            
+                        </div>
+    
+
+            </div>
+            
+
+            
+            <!--Div de Separação --------------->
+
+            <div class="div-sep">
+
+
+              
+              </div>   
+              
+              <!---------------------------------->
+  
+  
+  
+            <div class="h-100  bg-dark p-1 footer-site">
+
+              <div class="container-fluid h-100 w-100 p-0 m-0 bg-dark">
+
+                  <h1 class="text-light pb-3 text-center w-100 pt-5 tit-font">Um pouco sobre o site</h1>
+
+                  <div class="w-100 text-center pb-5 pt-4 mt-0">
+      
+                            <p class="text-light par-font">
+                              A plataforma é um trabalho de conclusão de curso. Projetado para atender as necessidades<br>
+                              de uma comunidade gamer fragmentada, devido as divergências que temos no mercado consumidor.<br>
+                              Dessa forma o nosso objetivo é filtrar e ajuntar informações de qualidade e confiança para os nossos usuários,<br>
+                              de forma que eles possam ter acesso as mesmas livremente e interagir com a comunidade contribuindo com opniões <br>
+                              e visão sobre o mercado de jogos.
+                            </p>
+                        </div>
+                        <div class="float-left pl-5">
+            
+                          <h4 class="text-light tit-font ">Participantes</h4>
+                          <p class="text-light text par-font ">
+                            Paulo Leonardo da Silva Paes - Programador Front-End. <br>
+                            Marco Aurélio Gea Junior - Programador Back-End. <br>
+                            Lukas Cintra - Designer Grafico.<br>
+                            Rodrigo Leonardo Mattos - Designer e Gestor de informações.<br>
+                            João Marcos Scarpim - Gestor de informações.<br>
+                          </p>
+      
+                          <h4 class="text-light tit-font">Tema:</h4>
+                          <p class="text-light text par-font">
+      
+                            Plataforma de informações voltadas para as interações na rede de jogos digitais.
+      
+                          </p>
+                        </div>
+            
+                        <div class="float-right pr-5 text-right ">
+            
+                            
+                            <ul class="text-light list p-0">
+                              <h6 class="tit-font">Recursos de Back-End:</h6>
+                              <li class=" par-font">PHP</li>
+                              <li class=" par-font">SQL - PhpMyAdmim</li>
+                            </ul>
+      
+                            <ul class="text-light list p-0">
+                                <h6 class="tit-font">Recursos de Front-End:</h6>
+                                <li class=" par-font">HTML</li>
+                                <li class=" par-font">CSS</li>
+                                <li class=" par-font">Java Script</li>
+                                <li class=" par-font">Bootstrap</li>
+                              </ul>
+                            
+                          </div>
+      
+
+              </div>
+
+            </div>
+                        <!--Div de Separação --------------->
+
+                        <div class="div-sep">
+
+
+              
+                          </div>   
+                          
+                          <!---------------------------------->
+            <div class="h-30 w-100 bg-light  m-0">
+
+              <div class="row p-0 m-0 w-100 h-100">
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 m-0 p-0 h-100 w-100">
+                  
+                   <div class="m-0 p-0">
+
+                   <h1><i class="fab fa-instagram text-dark"></i></h1>
+                      <p class="text-dark float-left">
+                        
+                      @paulao_paes<br>
+                      @rodrigomattos<br>
+                      @gea_marco<br>
+                      @joaomarcos_scarpim<br>
+                      @lvvkkxs<br>
+                      
+                      
+                      </p>
+                      
+
+                   </div>
+                   
+
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 m-0 p-0 h-100 w-100">
+
+                    <div class="m-0 p-0">
+ 
+                    <h1><i class="fab fa-facebook text-dark"></i></h1>
+                       <p class="text-dark float-left">
+                         
+                       Paulo Leonardo Paes<br>
+                       Rodrigo Leonardo Mattos<br>
+                       Marco Aurélio Gea<br>
+                       João Marcos Scarpim<br>
+                       Lukas Cintra<br>
+                       
+                       
+                       </p>
+                       
+ 
+                    </div>
+                    
+ 
+                 </div>
+
+                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 m-0 p-0 h-100 w-100">
+
+                    <div class="m-0 p-0">
+ 
+                    <h1><i class="fab fa-twitter text-dark"></i></h1>
+                       <p class="text-dark float-left">
+                         
+                       
+                       @rodrigomattos<br>
+                       @gea_marco<br>
+                       @joaomarcos_scarpim<br>
+                       @not_amena<br>
+                       
+                       
+                       </p>
+                       
+ 
+                    </div>
+                    
+ 
+                 </div>
+
+              </div>
+
+            </div>
+
+
+
+    </div>

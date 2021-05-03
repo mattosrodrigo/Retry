@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.text-bold{
+    font-weight: bolder;
+}
+
+.bg-purple{
+    background-color: #990099;
+}
+.btn-size{
+    width: 5em;
+}
+.bg-black{
+    background-color:#2a2a2a;
+}
+.input-widht{
+    width: 13em;
+}
+#addon-wrapping{
+    background-color: #2a2a2a;
+    color: #fff; 
+}
+#input{
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 1em; 
+}
+.widht-form{
+    height: 40em;
+}
+.frente{
+    z-index: 200000;
+}
+.atras{
+    z-index: -300;
+}
+ul{
+    list-style: none;
+}
+.dropdown_content{
+	position: absolute;
+	display: none;
+    min-width: 16em;
+    padding: 16px;
+    z-index: 1;
+
+}
+.dropdown:Hover .dropdown_content{
+    display: block;
+}
+.dropdown {
+	display: inline-block;
+	position: relative;
+}

@@ -1,0 +1,111 @@
+<div class="container-fluid m-0 p-0 h-75">
+
+      <header class="p-0 m-0">
+          <div class="container-fluid h-100 p-0 m-0"> 
+              <div class="row m-0 p-0 h-100">
+                  <!--Imagem Background----------- h-100 fixed-top position-relative mb-0 p-0-------------------------->
+                  <div class="col-12 header-site-pesquisa d-flex justify-content-center">
+                    <div class="col-4">
+                    <form action="/search" method="post" class="w-100">
+                        <div class="col-12 mb-3 text-center h-100">
+
+                            <div class="input-group">
+                              <input name="search" type="text" class="form-control" id="validationCustomUsername" placeholder="Digite um Jogo" aria-describedby="inputGroupPrepend" required>
+                              
+                              <div class="input-group-prepend">
+                                  <span class=" radius" id="inputGroupPrepend">
+    
+                                      <button class="btn btn-outline-dark h-100 w-100 text-light">Pesquisar</button>
+    
+                                  </span>
+                                </div>
+                            </div>
+                            
+                          </div>
+                    </form>
+                  </div>
+    
+                </div>
+                  <!--NavBar------------------------------------------------>
+                  <div class="col-12 position-absolute nav-site">
+                          <nav class="navbar navbar-expand-lg navbar-light fixed-top" >
+                                  <a class="navbar-brand text-light par-font" href="/"><img src="imagens/logo-retry.png" width="80"></a>
+                                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                  </button>
+                                  <div class="collapse navbar-collapse" id="navbarNav">
+                                    <ul class="navbar-nav ml-auto">
+                                      <li class="nav-item">
+                                        <a class="nav-link text-light par-font" href="/games">Jogos</a>
+                                      </li>
+                                      <?php if($this->view->auth_token != ''){ ?>  
+                                          <li class="nav-item dropdown ml-md-3 mt-sm-3 mt-md-0">
+                                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <?= $this->view->user ?>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                              <a class="dropdown-item" href="/sair">Sair</a>
+                                            </div>
+                                          </li>
+                                        <?php }else{ ?>  
+                                          <li class="nav-item ml-md-3 mt-sm-3 mt-md-0">
+                                            <a class="nav-link text-light" href="/login">Entrar</a>
+                                          </li>
+                                        <?php } ?>
+                                      
+                                    </ul>
+                                  </div>
+                                </nav>
+                  </div>
+                <!-------------------------------------------------------->
+                </div>
+          </div>
+        </header>
+    </div>
+
+          <!--Container 1 - Pesquisa-------------------------------------------------------------------------------------->
+          
+        <div class="container-fluid mt-5 mb-5 p-0 h-50">
+          
+        <?php foreach ($this->view->jogos as $key => $jogo) { ?>
+          <div class="row h-100 w-75 bg-black mt-2 d-flex justify-content-center">
+            
+            <div class="col-3 h-75 w-75 p-1 m-0 bg-light">
+
+              <!--Imagem em modo paisagem-->
+
+              <a href="/jogo?id=<?= $jogo['id'] ?>" class="m-0 p-0 h-100 w-100">
+        
+                <img src="imagens/<?= $jogo['id'] ?>/<?= $jogo['imagem'] ?>" class="img-fluid p-0 m-0 w-100 h-100">
+
+            </a>
+
+            </div>
+
+            <div class="col-4 h-100 p-0 m-0 pt-5 pl-5">
+
+              <h2 class="text-light tit-font">
+
+              <?= $jogo['titulo'] ?>
+
+              </h2>
+              <br>
+              <h4 class="text-light tit-font">
+
+              <?= $jogo['data_lancamento'] ?>
+
+              </h4>
+              <br>
+              <h4 class="text-light tit-font">
+
+              <?= $jogo['criador'] ?>
+
+              </h4>
+
+            </div>
+
+          </div>
+
+        <?php } ?>
+
+        </div>

@@ -1,0 +1,497 @@
+<header class="p-0 m-0 h-100">
+                <div class="container-fluid h-100 p-0 m-0"> 
+                    <div class="row m-0 p-0 h-100">
+                        <!--Imagem Background----------- h-100 fixed-top position-relative mb-0 p-0-------------------------->
+                        <div class="col-12 header-site d-flex justify-content-center">
+                          <div class="col-4">
+                          <form action="/search" method="post" class="w-100">
+                              <div class="col-12 mb-3 text-center h-100">
+    
+                                  <div class="input-group">
+                                    <input name="search" type="text" class="form-control" id="validationCustomUsername" placeholder="Digite um Jogo" aria-describedby="inputGroupPrepend" required>
+                                    
+                                    <div class="input-group-prepend">
+                                        <span class=" radius" id="inputGroupPrepend">
+          
+                                            <button class="btn btn-outline-dark h-100 w-100 text-light">Pesquisar</button>
+          
+                                        </span>
+                                      </div>
+                                  </div>
+                                  
+                                </div>
+                          </form>
+                        </div>
+          
+                      </div>
+                        <!--NavBar------------------------------------------------>
+                        <div class="col-12 position-absolute nav-site font-site ">
+                                <nav class="navbar navbar-expand-lg navbar-light fixed-top" >
+                                <a class="navbar-brand text-light par-font" href="/"><img src="imagens/logo-retry.png" width="80"></a>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                      <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNav">
+                                      <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item">
+                                          <a class="nav-link text-light par-font" href="/games">Jogos</a>
+                                        </li>
+                                        <?php if($this->view->auth_token != ''){ ?>  
+                                          <li class="nav-item dropdown ml-md-3 mt-sm-3 mt-md-0">
+                                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <?= $this->view->user ?>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                              <a class="dropdown-item" href="/sair">Sair</a>
+                                            </div>
+                                          </li>
+                                        <?php }else{ ?>  
+                                          <li class="nav-item ml-md-3 mt-sm-3 mt-md-0">
+                                            <a class="nav-link text-light" href="/login">Entrar</a>
+                                          </li>
+                                        <?php } ?>
+                                            
+                                          </ul>
+                                        </div>
+                                      </nav>
+                        </div>
+                      <!-------------------------------------------------------->
+                      </div>
+                </div>
+              </header>
+    
+       <!--Container do nome/separação----------------------------------------->
+        <div class="container-fluid p-1 w-100 h-20">
+
+          <div class="container-fluid m-0 p-0 pt-3 pb-1 h-100 w-100 bg-light">
+
+            <h1 class="text-dark text-center"><?= $this->view->jogo['titulo'] ?></h1>
+
+          </div>
+            
+        </div>
+
+         <!---Container principal-------------------------------------------------------------------------------------->
+        <!--titulo, data_lançamento, criador, sinpopse, plataforma, link_video, imagem, avaliacao, nota-->
+
+        <div class="h-100 container-fluid w-100 m-0 p-0 p-1">
+
+          <div class="container-fluid m-0 p-2 h-100 w-100 bg-dark">
+
+              <div class="row mb-2 p-0 w-100 h-30 d-flex justify-content-center ">
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      
+                      <p class="text-light text-center w-100 pt-4 pl-5 pr-5">
+      
+                      <?= $this->view->jogo['resumo'] ?>
+                     
+                      </p>
+      
+                  </div>
+      
+                </div>
+      
+                <div class="row m-0 p-0 h-60 d-flex justify-content-center align-items-center w-100">
+      
+                  <div class="col-xl-6 col-lg-6 w-100 h-100 d-none d-lg-block d-xl-block">
+      
+                      <embed src="https://<?= str_replace('watch?v=','embed/', $this->view->jogo['link_video']) ?>" allowfullscreen="true" width="100%" height="100%">
+                    
+                  </div>  
+      
+                </div>
+
+          </div>
+
+        </div>
+
+                    <!--Div de Separação --------------->
+
+                    <div class="div-sep">
+
+
+              
+                      </div>   
+
+        <!--Container de informações-->
+        <div class="container-fluid m-0 p-0 w-100 p-1">
+
+          <div class="container-fluid m-0 p-0 h-100 w-100 bg-dark">
+
+            <div class="row m-0 p-0 h-100 w-100">
+
+              <div class=" col-xl-6 col-lg-6 col-md-12 col-sm-12 float-left m-0 p-0 h-100">
+  
+                <div class="row m-0 p-0 h-100">
+  
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 h-50 float-left p-4 ">
+  
+                    <div class="container-fluid m-0 p-0 h-100 w-100 ">
+  
+                      <div class="par-text text-light">
+  
+                        <h3 class="">Criador/Desenvolvedor</h3>
+  
+                        <p class=""><?= $this->view->jogo['criador'] ?></p>
+  
+                    </div>
+  
+                    <div class="par-text text-light">
+  
+                        <h3 class="">Data de Lançamento</h3>
+  
+                        <p class=""><?php
+                        $data = new DateTime($this->view->jogo['data_lancamento']);                  
+                        echo $data->format('d/m/Y');
+                        ?></p>
+  
+                    </div>
+  
+                    <div class="par-text text-light">
+  
+                        <h3 class="">Plataformas Disponíveis</h3>
+  
+                        <p class=""><?= $this->view->jogo['plataformas'] ?></p>
+  
+                    </div>
+  
+                  </div>
+  
+                  </div>
+  
+                  <div class="row h-100 w-100 p-0 m-0">
+  
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-3 h-50 float-left">
+  
+                      <h5 class="text-light w-100 text-center p-2">Requisitos Mínimos</h5>
+    
+                      <p class="text-light text-center w-100 pt-2" style="font-size: 10pt;">
+    
+                      <?= $this->view->jogo['requisitos_minimos'] ?>
+    
+                      </p>
+    
+                    </div>
+                    
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 h-50 float-left  ">
+    
+                        <h5 class="text-light w-100 text-center p-2">Requisitos Recomendados</h5>
+      
+                        <p class="text-light text-center w-100 pt-2" style="font-size: 10pt;">
+      
+                        <?= $this->view->jogo['requisitos_recomendados'] ?>
+      
+                        </p>
+      
+                      </div>
+                    
+                  </div>
+                  
+                </div>
+  
+              </div>
+  
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 d-none d-xl-block d-lg-block m-0 p-0 float-left h-100  p-2 bg-light">
+  
+                <img src="imagens/<?= $this->view->jogo['id'] ?>/<?= $this->view->jogo['imgretrato'] ?>" alt="" class="img-flui h-100 w-100 m-0 p-0">
+  
+              </div>
+  
+            </div>
+
+          </div>
+
+        </div>
+
+                    <!--Div de Separação --------------->
+
+                    <div class="div-sep">
+
+
+              
+                      </div>   
+
+        <!--Container de Avaliações--------------------------------->
+
+        <div class=" w-100 m-0 p-0 container-fluid ">
+
+          <div class="row p-0 m-0 h-100 w-100 bg-dark">
+
+            <div class="bg-light pt-0 pb-0 pl-0 pr-1 col-xl-6 col-lg-6 col-md-6 col-sm-12 h-100 m-0 p-0 bg-black float-left">
+
+              <div class="m-0 p-0 h-100 w-100 bg-dark">
+
+                <h1 class="w-100 p-4 text-light text-center"> Avaliação/Crítica Oficial</h1>
+
+                <p class="text-light text-center h-100 w-100 p-2">
+  
+                <?= $this->view->jogo['avaliacao'] ?>
+  
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 h-100 pt-0 pb-0 pr-0 pl-0 m-0 float-left bg-light">
+
+              <div class="container-fluid m-0 p-0 bg-dark w-100 h-100">
+
+                <div class="row m-0 p-0 h-100 w-100 d-flex align-items-center">
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 h-50 p-4 bg-dark float-left">
+  
+                      <h1 class="w-100 text-center text-light p-2"> Avaliação dos Usuários:</h1>
+
+                      <?php if(isset($_SESSION['auth_token']) && $_SESSION['auth_token'] != '' ) { ?>
+    
+                      <form action="/like" method='get' class="h-100 w-100 d-flex justify-content-center pt-4 bg-dark">
+  
+                        <?php if(!$this->view->isLiked){ ?>
+                          <input type="hidden" name="id" value="<?= $this->view->jogo['id'] ?>">
+                          <button class="btn-ava btn bg-dark float-left"><img src="imagens/like_3.png" alt="" class="img-fluid bg-dark" width="100%" height="100%"></button>
+                        <?php }else{ ?>
+                          <input type="hidden" name="id" value="<?= $this->view->jogo['id'] ?>">
+                          <button class="btn-ava btn bg-dark float-left"><img src="imagens/like_3_activated.png" alt="" class="img-fluid" width="100%" height="100%"></button>
+                        <?php } ?>
+                      </form>
+
+                      <?php } ?>
+
+                      <h4 class="text-light">Likes</h4>
+                      <p class="text-light"><?= $this->view->qtdLikes['qtd_likes'] ?> </p>
+                      
+                    </div>
+  
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+                    <!--Div de Separação --------------->
+
+                    <div class="div-sep">
+
+
+              
+                      </div>   
+
+        <!--Div de Comentarios-------------------------------->
+
+        <?php if($this->view->auth_token != ''){ ?>
+        <div class=" w-100 m-0 p-0">
+
+         <div class="container-fluid m-0 p-5  w-100 bg-dark ">
+
+          <div class="row  w-100 p-0 m-0">
+
+            <div class="container-fluid w-100 m-0 p-0 d-flex justify-content-center">
+
+              <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 m-0 p-0 h-100">
+
+                <form action="/comentar" method="post" class=" w-100 p-0 m-0">
+                  <input type="hidden" name="id" value="<?= $this->view->jogo['id'] ?>">
+                  <div class="row p-0 m-0 h-80 w-100">
+
+                    <div class="col-12 m-0 p-0 h-100">
+
+                      <textarea name="comentario" id="" cols="30" rows="10" class="text-dark bg-light h-80 w-100" resize="none">
+
+                      </textarea>
+  
+
+                    </div>
+
+                  </div>
+                  
+                  <div class="row p-0 m-0 w-100 h-20">
+
+                    <div class="col-10 p-0 m-0 h-100">
+
+                      <h3 class="text-light float-left tit-font">
+
+                       <?= $this->view->user ?>
+
+                      </h3>
+
+                    </div>
+
+                    <div class="col-2 m-0 p-0 h-100 text-light">
+
+                      <button type="submit" class="btn btn-outline-light w-100 h-100 text-light">
+
+                        Enviar
+
+                      </button>
+
+                    </div>
+                    
+                  </div>
+  
+                </form>
+
+              </div>
+
+            </div>
+
+          </div>
+        <?php } ?>
+
+          <!--row de separação-->
+          <div class="row m-0 p-0 mt-5 mb-5 w-100 d-flex justify-content-center">
+
+            <div class="p-1 w-50 border-top"><h4 class="text-light">Comentarios:</h4></div>
+
+          </div>
+          <!---->
+
+          <div class="row m-0 p-0 w-100 pt-5 pb-5">
+
+            <div class="container-fluid w-100 m-0 p-0 d-flex justify-content-center">
+
+              <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 m-0 p-0">
+
+                <?php foreach ($this->view->comentarios as $key => $comentario) { ?>
+                
+                <div class="row pb-3 m-0 w-100 h-30 row-text-coment">
+
+                  <div class="col-10 m-0 p-2 h-100 border-coment">
+
+                    <h3 class="text-light float-left tit-font">
+                      <?= $comentario['nome'] ?>
+                    </h3>
+
+                  </div>
+
+                  <div class="col-2 m-0 p-0 h-100 p-2">
+
+                    <h5 class="text-light float-right tit-font">
+                    <?php
+                        $data = new DateTime($comentario['data']);                  
+                        echo $data->format('d/m/Y');
+                        ?>
+                    </h5>
+
+                  </div>
+
+                </div>
+
+                <div class="row p-2 pt-2 m-0 w-100 row-text-coment1">
+
+                  <div class="col-12 bg-light m-0 p-3 h-100 w-100">
+
+                    <p class="text-dark text-left par-font">
+                      <?= $comentario['comentario'] ?>
+                    </p>
+
+                  </div>
+
+                </div>
+                <?php } ?>
+              </div>
+              
+            </div>
+
+          </div>
+
+         </div> 
+         
+
+         <!--Div de Separação --------------->
+
+         <div class="div-sep p-4">
+
+
+              
+        </div>   
+        
+        <!---------------------------------->
+        <div class="h-30 w-100 bg-light  m-0">
+
+<div class="row p-0 m-0 w-100 h-100">
+
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 m-0 p-0 h-100 w-100">
+    
+     <div class="m-0 p-0">
+
+     <h1><i class="fab fa-instagram text-dark"></i></h1>
+        <p class="text-dark float-left">
+          
+        @paulao_paes<br>
+        @rodrigomattos<br>
+        @gea_marco<br>
+        @joaomarcos_scarpim<br>
+        @lvvkkxs<br>
+        
+        
+        </p>
+        
+
+     </div>
+     
+
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 m-0 p-0 h-100 w-100">
+
+      <div class="m-0 p-0">
+
+      <h1><i class="fab fa-facebook text-dark"></i></h1>
+         <p class="text-dark float-left">
+           
+         Paulo Leonardo Paes<br>
+         Rodrigo Leonardo Mattos<br>
+         Marco Aurélio Gea<br>
+         João Marcos Scarpim<br>
+         Lukas Cintra<br>
+         
+         
+         </p>
+         
+
+      </div>
+      
+
+   </div>
+
+   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 m-0 p-0 h-100 w-100">
+
+      <div class="m-0 p-0">
+
+      <h1><i class="fab fa-twitter text-dark"></i></h1>
+         <p class="text-dark float-left">
+           
+         
+         @rodrigomattos<br>
+         @gea_marco<br>
+         @joaomarcos_scarpim<br>
+         @not_amena<br>
+         
+         
+         </p>
+         
+
+      </div>
+      
+
+   </div>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+         <style>
+    
+    textarea{
+        resize: none;
+    }
+</style>
